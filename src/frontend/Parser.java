@@ -1,5 +1,7 @@
 package frontend;
 
+import intermediate.ICode;
+import intermediate.SymTab;
 import message.MessageHandler;
 import message.MessageProducer;
 
