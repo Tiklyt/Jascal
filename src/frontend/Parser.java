@@ -1,12 +1,16 @@
 package frontend;
 
-import java.util.Scanner;
+import message.MessageHandler;
+import message.MessageProducer;
 
-public abstract class Parser {
+import java.util.Scanner;
+public abstract class Parser implements MessageProducer {
     protected static SymTab symTab;
+    protected static MessageHandler messageHandler;
 
     static {
         symTab = null;
+        messageHandler = new MessageHandler();
     }
 
     protected Scanner scanner;
@@ -27,6 +31,18 @@ public abstract class Parser {
 
     public Token nextToken() throws Exception{
         return scanner.nextToken();
+    }
+
+    public void addMessageListener(MessageListener listener){
+        messageHandler.addListener(listener);
+    }
+
+    public void removeMessageListener(MessageListener listener){
+        messageHandler.removeListener(listener);
+    }
+
+    public void sendMessage(Message message){
+        messageHandler.sendMessage(message);
     }
 
 }
