@@ -2,10 +2,11 @@ package frontend;
 
 import intermediate.ICode;
 import intermediate.SymTab;
+import message.Message;
 import message.MessageHandler;
+import message.MessageListener;
 import message.MessageProducer;
 
-import java.util.Scanner;
 public abstract class Parser implements MessageProducer {
     protected static SymTab symTab;
     protected static MessageHandler messageHandler;
