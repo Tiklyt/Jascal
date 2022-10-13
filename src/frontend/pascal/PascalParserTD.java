@@ -8,6 +8,8 @@ import message.Message;
 import message.MessageListener;
 import message.MessageType;
 
+import static message.MessageType.PARSER_SUMMARY;
+
 public class PascalParserTD extends Parser {
 
 
@@ -19,30 +21,16 @@ public class PascalParserTD extends Parser {
     public void parse() throws Exception {
         Token token;
         long startTime = System.currentTimeMillis();
-        while(!((token = nextToken()) instanceof EofToken)){
-            float elapsedTime = (System.currentTimeMillis() - startTime)/1000f;
-            sendMessage(new Message(MessageType.PARSER_SUMMARY,
-                    new Number[] {token.getLineNumber(),getErrorCount(),elapsedTime}));
-        }
+        while (!((token = nextToken()) instanceof EofToken)) {}
+        float elapsedTime = (System.currentTimeMillis() - startTime)/1000f;
+        sendMessage(new Message(PARSER_SUMMARY,
+                new Number[] {token.getLineNumber(),
+                        getErrorCount(),
+                        elapsedTime}));
     }
 
     @Override
     public int getErrorCount() {
         return 0;
-    }
-
-    @Override
-    public void addMessageListener(MessageListener listener) {
-
-    }
-
-    @Override
-    public void removeMessageListener(MessageListener listener) {
-
-    }
-
-    @Override
-    public void sendMessage(Message message) {
-
     }
 }

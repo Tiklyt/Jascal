@@ -14,18 +14,18 @@ public abstract class Scanner {
         return currentToken;
     }
 
-    public Token nextToken(){
+    public Token nextToken() throws Exception {
         currentToken = extractToken();
         return currentToken;
     }
 
     protected  abstract Token extractToken() throws  Exception;
 
-    public char currentChar(){
+    public char currentChar() throws Exception {
         return source.currentChar();
     }
 
-    public char nextChar(){
+    public char nextChar() throws Exception {
         return source.nextChar();
     }
 

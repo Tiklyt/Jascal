@@ -5,7 +5,17 @@ public class Token {
     protected String text;
     protected Object value;
     protected Source source;
+
+    public int getLineNumber() {
+        return lineNum;
+    }
+
     protected int lineNum;
+
+    public int getPosition() {
+        return position;
+    }
+
     protected int position;
 
     public Token(Source source) throws Exception {
